@@ -1,22 +1,20 @@
+# Write a recursive program to reverse a string
 
-def swap(s, i, j):
-    temp = s[i]
-    s[i] = s[j]
-    s[j] = temp
+# Input: Word of the day
 
-    return s
+input_str = "Word of the day"
 
-def reverse_string(s, l, h):
-    if l < h:
-        s = swap(s, l, h)
-        return reverse_string(s, l + 1, h - 1)
-    return s
+def fn_swap(char_array, index_a, index_b):
+    temp_char = char_array[index_a]
+    char_array[index_a] = char_array[index_b]
+    char_array[index_b] = temp_char
 
-data_input = "Hello World"
-the_string = []
+def fn_reverse(char_array, index_a, index_b):
+    if(index_a < index_b):
+        fn_swap(char_array, index_a, index_b)
+        fn_reverse(char_array, index_a + 1, index_b - 1)
 
-for o in data_input:
-    the_string.append(o)
+char_array = list(input_str)
+fn_reverse(char_array, 0, len(char_array) - 1)
 
-data_output = reverse_string(the_string, 0, len(the_string) - 1)
-print(data_output)
+print(char_array)
